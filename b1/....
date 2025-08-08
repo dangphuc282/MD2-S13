@@ -1,1 +1,70 @@
+1. Sách (Book)
+Mã sách (bookId) – Primary Key
+
+Tên sách (title)
+
+Tác giả (author)
+
+Năm xuất bản (publicationYear)
+
+Thể loại (genre)
+
+Số lượng còn lại (quantityAvailable)
+
+1.2. Độc giả (Reader)
+Mã độc giả (readerId) – Primary Key
+
+Họ tên (name)
+
+Ngày sinh (dob)
+
+Số điện thoại (phone)
+
+Địa chỉ (address)
+
+1.3. Mượn (Borrow)
+Mã phiếu mượn (borrowId) – Primary Key
+
+Mã độc giả (readerId) – Foreign Key → Reader.readerId
+
+Mã sách (bookId) – Foreign Key → Book.bookId
+
+Ngày mượn (borrowDate)
+
+Ngày trả (returnDate)
+
+Trạng thái (status) – VD: Đang mượn, Đã trả
+
+2. Các mối quan hệ
+Reader – Borrow:
+Một độc giả có thể mượn nhiều sách → Quan hệ 1 - N
+
+Book – Borrow:
+Một sách có thể được mượn bởi nhiều độc giả → Quan hệ 1 - N
+[Reader]───<borrows>───[Borrow]───<includes>───[Book]
+
+[Reader]
+  └─ readerId (PK)
+  └─ name
+  └─ dob
+  └─ phone
+  └─ address
+
+[Book]
+  └─ bookId (PK)
+  └─ title
+  └─ author
+  └─ publicationYear
+  └─ genre
+  └─ quantityAvailable
+
+[Borrow]
+  └─ borrowId (PK)
+  └─ readerId (FK)
+  └─ bookId (FK)
+  └─ borrowDate
+  └─ returnDate
+  └─ status
+
+
 
